@@ -88,8 +88,9 @@ extension SIMD4: RotateableLanesProtocol {
 extension Int {
     @inline(__always)
     fileprivate func modulo(_ divisor: Self) -> Self {
+        precondition(divisor > 0)
         let remainder = self % divisor
-        return remainder >= 0 ? remainder : remainder &+ divisor
+        return remainder < 0 ? remainder &+ divisor : remainder
     }
 }
 
