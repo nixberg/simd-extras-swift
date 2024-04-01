@@ -7,6 +7,14 @@ extension SIMD where Scalar: FixedWidthInteger {
         return result
     }
     
+    public var byteSwapped: Self {
+        var result = Self()
+        for index in indices {
+            result[index] = self[index].byteSwapped
+        }
+        return result
+    }
+    
     public var littleEndian: Self {
         var result = Self()
         for index in indices {
