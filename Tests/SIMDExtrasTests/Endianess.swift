@@ -4,7 +4,7 @@ import Testing
 struct Endianess {
     typealias Vector = SIMD2<UInt16>
     
-    static let vectors = [Vector].random(count: 128)
+    static let vectors = [Vector].random(in: ..., count: 128)
     
     @Test("SIMD/bigEndian", arguments: vectors)
     func bigEndian(vector: Vector) {

@@ -5,7 +5,7 @@ import Testing
 struct Rotate {
     typealias Vector = SIMD2<UInt8>
     
-    static let vectors = [Vector].random(count: 4)
+    static let vectors = [Vector].random(in: ..., count: 4)
     
     @Test("SIMD/rotate(left:)", arguments: vectors.prefix(1), 0...8)
     func rotateLeft(vector: Vector, count: Vector.Scalar) {
