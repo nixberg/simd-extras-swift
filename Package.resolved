@@ -1,5 +1,5 @@
 {
-  "originHash" : "3f81f84425342b4136c72bd8a9d9870c6b213270eb712d03687a0e36d6496098",
+  "originHash" : "edd1a8a29654cf87315c6f16ef8973c912410682fe89f2b8b25b32b391e6b347",
   "pins" : [
     {
       "identity" : "swift-numerics",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/apple/swift-numerics",
       "state" : {
         "branch" : "main",
-        "revision" : "0111e791a16a08f577078e2e39b5f68918bf29b0"
+        "revision" : "877fd0aa9a61663471e2f43bc592ae98de4d8117"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-syntax.git",
       "state" : {
-        "revision" : "fa8f95c2d536d6620cc2f504ebe8a6167c9fc2dd",
-        "version" : "510.0.1"
+        "revision" : "d9c1feb7e4f1f4fb4c04f8f855b42cb5a7da61ef",
+        "version" : "600.0.0-prerelease-2024-05-28"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-testing",
       "state" : {
-        "revision" : "97d1f8a4e91794ec6bbf1ecb252ab31b1e255052",
-        "version" : "0.7.0"
+        "revision" : "c392dadce39a5055579432bba432486a003d75c6",
+        "version" : "0.9.0"
       }
     }
   ],
