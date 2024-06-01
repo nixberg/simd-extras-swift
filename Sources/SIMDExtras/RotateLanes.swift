@@ -1,26 +1,38 @@
 public protocol RotateableLanesProtocol where Self: SIMD {
-    func rotatingLanes(left count: Int) -> Self
+    mutating func rotateLanes(left count: _const Int)
     
-    func rotatingLanes(right count: Int) -> Self
-}
-
-extension RotateableLanesProtocol {
-    @inline(__always)
-    public mutating func rotateLanes(left count: Int) {
-        self = self.rotatingLanes(left: count)
-    }
+    func rotatingLanes(left count: _const Int) -> Self
     
-    @inline(__always)
-    public mutating func rotateLanes(right count: Int) {
-        self = self.rotatingLanes(right: count)
-    }
+    mutating func rotateLanes(right count: _const Int)
+    
+    func rotatingLanes(right count: _const Int) -> Self
 }
 
 extension SIMD2: RotateableLanesProtocol {
     private typealias Indices = SIMD2<Int>
     
     @inline(__always)
-    public func rotatingLanes(left count: Int) -> Self {
+    public mutating func rotateLanes(left count: _const Int) {
+        self = self.rotatingLanesImplementation(left: count)
+    }
+    
+    @inline(__always)
+    public func rotatingLanes(left count: _const Int) -> Self {
+        self.rotatingLanesImplementation(left: count)
+    }
+    
+    @inline(__always)
+    public mutating func rotateLanes(right count: _const Int) {
+        self = self.rotatingLanesImplementation(left: 0 &- count)
+    }
+    
+    @inline(__always)
+    public func rotatingLanes(right count: _const Int) -> Self {
+        self.rotatingLanesImplementation(left: 0 &- count)
+    }
+    
+    @inline(__always)
+    private func rotatingLanesImplementation(left count: Int) -> Self {
         switch count.modulo(Self.scalarCount) {
         case 0:
             self[Indices(0, 1)]
@@ -30,18 +42,33 @@ extension SIMD2: RotateableLanesProtocol {
             unreachable()
         }
     }
-    
-    @inline(__always)
-    public func rotatingLanes(right count: Int) -> Self {
-        self.rotatingLanes(left: 0 &- count)
-    }
 }
 
 extension SIMD3: RotateableLanesProtocol {
     private typealias Indices = SIMD3<Int>
     
     @inline(__always)
-    public func rotatingLanes(left count: Int) -> Self {
+    public mutating func rotateLanes(left count: _const Int) {
+        self = self.rotatingLanesImplementation(left: count)
+    }
+    
+    @inline(__always)
+    public func rotatingLanes(left count: _const Int) -> Self {
+        self.rotatingLanesImplementation(left: count)
+    }
+    
+    @inline(__always)
+    public mutating func rotateLanes(right count: _const Int) {
+        self = self.rotatingLanesImplementation(left: 0 &- count)
+    }
+    
+    @inline(__always)
+    public func rotatingLanes(right count: _const Int) -> Self {
+        self.rotatingLanesImplementation(left: 0 &- count)
+    }
+    
+    @inline(__always)
+    private func rotatingLanesImplementation(left count: Int) -> Self {
         switch count.modulo(Self.scalarCount) {
         case 0:
             self[Indices(0, 1, 2)]
@@ -53,18 +80,33 @@ extension SIMD3: RotateableLanesProtocol {
             unreachable()
         }
     }
-    
-    @inline(__always)
-    public func rotatingLanes(right count: Int) -> Self {
-        self.rotatingLanes(left: 0 &- count)
-    }
 }
 
 extension SIMD4: RotateableLanesProtocol {
     private typealias Indices = SIMD4<Int>
     
     @inline(__always)
-    public func rotatingLanes(left count: Int) -> Self {
+    public mutating func rotateLanes(left count: _const Int) {
+        self = self.rotatingLanesImplementation(left: count)
+    }
+    
+    @inline(__always)
+    public func rotatingLanes(left count: _const Int) -> Self {
+        self.rotatingLanesImplementation(left: count)
+    }
+    
+    @inline(__always)
+    public mutating func rotateLanes(right count: _const Int) {
+        self = self.rotatingLanesImplementation(left: 0 &- count)
+    }
+    
+    @inline(__always)
+    public func rotatingLanes(right count: _const Int) -> Self {
+        self.rotatingLanesImplementation(left: 0 &- count)
+    }
+    
+    @inline(__always)
+    private func rotatingLanesImplementation(left count: Int) -> Self {
         switch count.modulo(Self.scalarCount) {
         case 0:
             self[Indices(0, 1, 2, 3)]
@@ -77,11 +119,6 @@ extension SIMD4: RotateableLanesProtocol {
         default:
             unreachable()
         }
-    }
-    
-    @inline(__always)
-    public func rotatingLanes(right count: Int) -> Self {
-        self.rotatingLanes(left: 0 &- count)
     }
 }
 
