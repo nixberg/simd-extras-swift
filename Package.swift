@@ -15,7 +15,7 @@ let package = Package(
             branch: "main"),
         .package(
             url: "https://github.com/apple/swift-testing",
-            .upToNextMinor(from: "0.9.0")),
+            .upToNextMinor(from: "0.10.0")),
     ],
     targets: [
         .target(
